@@ -6,6 +6,7 @@ module.exports = {
 
     Mutation: {
         addRecipe: (_, {caption}, {dataSources}) => dataSources.controller.addRecipe(caption),
-        removeRecipe: (_, {id}, {dataSources}) => dataSources.controller.removeRecipe(id)
+        removeRecipe: (_, {id}, {dataSources}) => dataSources.controller.removeRecipe(id),
+        renameRicipe: (_, {id, newName}, {dataSources}) => dataSources.controller.renameRicipe(id, newName)
     }
 };

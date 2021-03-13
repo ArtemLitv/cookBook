@@ -7,13 +7,15 @@ const typeDefs = gql`
     }
 
     type Mutation {
+        renameRicipe(id: ID!, newName: String!): RecipeResponse
         addRecipe(caption: String): RecipeResponse
         removeRecipe(id: ID!): RecipeResponse
     }
 
     type Recipe {
         id: ID!
-        caption: String
+        caption: String,
+        body: String
     }
 
     type RecipeResponse {
