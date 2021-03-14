@@ -3,12 +3,12 @@ const DB = {
         {
             id: "0",
             caption: 'FFF',
-            body: 'some body\nsome body'
+            body: 'some body FFF\nsome body'
         },
         {
             id: "1",
             caption: 'AAA',
-            body: 'some body\nsome body'
+            body: 'some body AAA\nsome body'
         },
         {
             id: "2",
