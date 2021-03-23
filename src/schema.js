@@ -7,7 +7,7 @@ const typeDefs = gql`
     }
 
     type Mutation {
-        renameRicipe(id: ID!, newName: String!): RecipeResponse
+        editRecipe(id: ID!, newName: String, newBody: String): RecipeResponse
         addRecipe(caption: String): RecipeResponse
         removeRecipe(id: ID!): RecipeResponse
     }

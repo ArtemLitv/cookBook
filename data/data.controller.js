@@ -55,26 +55,29 @@ class Controller {
     return result;
   }
 
-  renameRicipe(id, newName) {
-    const recipe = this.DB_GET_BY_ID(id);
-    if (recipe) {
-      recipe.caption = newName;
-      this.DB_REPLACE(id, recipe);
+  editRecipe(id, {name, body}) {
+    const {findRecipe, error} = this.DB_GET_BY_ID(id);
+    if (findRecipe) {
+      findRecipe.caption = name;
+      findRecipe.body = body
+      this.DB_REPLACE(id, findRecipe);
     }
     return {
       succsess: true,
       message: "Recipie was created",
-      recipe: recipe,
+      recipe: findRecipe,
     };
   }
 
   DB_GET_BY_ID(id) {
-    return DB.recipes.find((recipe) => recipe.id === id);
+    const findRecipe = DB.recipes.find((recipe) => recipe.id === id);
+    const error = findRecipe ? null : 'Not Foutd'
+    return {findRecipe, error};
   }
 
   DB_REPLACE(id, recipe) {
-    const findRecipe = this.DB_GET_BY_ID(id);
-    if (!findRecipe) return false;
+    const {findRecipe, error} = this.DB_GET_BY_ID(id);
+    if (!recipe || error) return false;
 
     DB.recipes = DB.recipes.map((currentRecipe) => {
       if (currentRecipe.id === id) return recipe;
